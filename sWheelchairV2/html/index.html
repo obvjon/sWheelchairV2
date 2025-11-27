@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>sWheelchairV2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <div id="wheelchair-root">
+        <div id="app" v-cloak>
+            <div class="boss-window boss-window-small" v-if="visible" ref="window">
+                <!-- HEADER -->
+                <div class="boss-header" ref="header">
+                    <div class="boss-header-left">
+                        <div class="boss-header-title-block">
+                            <span class="boss-header-label">
+                                {{ labels.Title }}
+                            </span>
+                            <span class="boss-header-sub">
+                                {{ labels.Subtitle }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="boss-header-right">
+                        <button class="boss-header-close" @click="close">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+
+                <div class="boss-accent-row">
+                    <div class="boss-accent-bar"></div>
+                </div>
+
+                <!-- CONTENT -->
+                <div class="boss-content">
+                    <div class="boss-section">
+                        <div class="section-title-row">
+                            <h5>{{ labels.Title }}</h5>
+                            <span>{{ labels.Subtitle }}</span>
+                        </div>
+
+                        <div class="boss-row">
+                            <div class="boss-card full">
+                                <div class="card-label">
+                                    {{ labels.IdLabel }}
+                                </div>
+                                <div class="card-form">
+                                    <input type="number" v-model="form.targetId" placeholder="1"
+                                        @keyup.enter="submit" />
+                                </div>
+                                <div class="card-hint">
+                                    {{ labels.IdHint }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="boss-row">
+                            <div class="boss-card full">
+                                <div class="card-label">
+                                    {{ labels.TimeLabel }}
+                                </div>
+                                <div class="card-form">
+                                    <input type="number" v-model="form.minutes" placeholder="10"
+                                        @keyup.enter="submit" />
+                                </div>
+                                <div class="card-hint">
+                                    {{ labels.TimeHint }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="boss-actions-row">
+                            <button class="boss-btn" @click="submit">
+                                {{ labels.Apply }}
+                            </button>
+                            <button class="boss-btn secondary" @click="close">
+                                {{ labels.Close }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
